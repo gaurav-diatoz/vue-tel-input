@@ -382,7 +382,6 @@ export default {
     getCountryName(country) {
       let countryName = "";
       countryName = country.split("(")[0];
-      console.log(countryName);
       return countryName;
     },
     initializeCountry() {
