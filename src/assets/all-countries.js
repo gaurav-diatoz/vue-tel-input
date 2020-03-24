@@ -513,7 +513,7 @@ const allCountries = [
     '354',
   ],
   [
-    'India (भारत)',
+    'India',
     'in',
     '91',
   ],
