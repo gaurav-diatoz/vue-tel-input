@@ -48,11 +48,12 @@
       :maxlength="maxLen"
       :tabindex="inputOptions && inputOptions.tabindex ? inputOptions.tabindex : 0"
       @blur="onBlur"
-      @focus="onFocus"
       @input="onInput"
+      @focus="onFocus"
       @keyup.enter="onEnter"
       @keyup.space="onSpace"
     />
+    {{ phone }}
   </div>
 </template>
 
@@ -89,7 +90,9 @@ export default {
         // Provided expression must evaluate to a function.
         if (typeof binding.value !== "function") {
           const compName = vNode.context.name;
-          let warn = `[Vue-click-outside:] provided expression ${binding.expression} is not a function, but has to be`;
+          let warn = `[Vue-click-outside:] provided expression ${
+            binding.expression
+          } is not a function, but has to be`;
           if (compName) {
             warn += `Found in component ${compName}`;
           }
@@ -309,7 +312,8 @@ export default {
     // eslint-disable-next-line func-names
     "phoneObject.valid": function(value) {
       if (value) {
-        this.phone = this.phoneText;
+        // Commented out for not adding 0 or any code before phone number
+        // this.phone = this.phoneText;
       }
       this.$emit("validate", this.phoneObject);
       this.$emit("onValidate", this.phoneObject); // Deprecated
