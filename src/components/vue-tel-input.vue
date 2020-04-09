@@ -313,7 +313,6 @@ export default {
       if (value) {
         // Commented out for not adding 0 or any code before phone number
         // this.phone = this.phoneText;
-        console.log(this.phoneObject);
       }
       this.$emit("validate", this.phoneObject);
       this.$emit("onValidate", this.phoneObject); // Deprecated
