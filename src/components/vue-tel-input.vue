@@ -53,7 +53,6 @@
       @keyup.enter="onEnter"
       @keyup.space="onSpace"
     />
-    {{ phone }}
   </div>
 </template>
 
@@ -314,6 +313,7 @@ export default {
       if (value) {
         // Commented out for not adding 0 or any code before phone number
         // this.phone = this.phoneText;
+        console.log(this.phoneObject);
       }
       this.$emit("validate", this.phoneObject);
       this.$emit("onValidate", this.phoneObject); // Deprecated
@@ -485,7 +485,7 @@ export default {
         this.phone = `+${parsedCountry.dialCode}`;
       }
       if (toEmitInputEvent) {
-        this.$emit("input", this.phoneText, this.phoneObject);
+        this.$emit("input", this.phone, this.phoneObject);
         this.$emit("onInput", this.phoneObject); // Deprecated
       }
     },
@@ -507,7 +507,7 @@ export default {
       // Returns response.number to assign it to v-model (if being used)
       // Returns full response for cases @input is used
       // and parent wants to return the whole response.
-      this.$emit("input", this.phoneText, this.phoneObject);
+      this.$emit("input", this.phone, this.phoneObject);
       this.$emit("onInput", this.phoneObject); // Deprecated
 
       // Keep the current cursor position just in case the input reformatted

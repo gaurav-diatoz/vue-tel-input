@@ -1,27 +1,37 @@
 <template>
   <div id="app">
     <template v-if="!showPlayground">
-      <a href="https://www.npmjs.com/package/vue-tel-input"><img src="https://img.shields.io/npm/dt/vue-tel-input.svg"></a>&nbsp;
-      <a href="https://github.com/EducationLink/vue-tel-input"><img src="https://img.shields.io/github/stars/EducationLink/vue-tel-input.svg"></a>
-      <h2 style="color: #999">made with &#x2764; by some <a
-        style="color: inherit"
-        href="https://github.com/EducationLink/vue-tel-input/graphs/contributors">awesome humans</a>.</h2>
+      <a href="https://www.npmjs.com/package/vue-tel-input"
+        ><img src="https://img.shields.io/npm/dt/vue-tel-input.svg"/></a
+      >&nbsp;
+      <a href="https://github.com/EducationLink/vue-tel-input"
+        ><img src="https://img.shields.io/github/stars/EducationLink/vue-tel-input.svg"
+      /></a>
+      <h2 style="color: #999">
+        made with &#x2764; by some
+        <a
+          style="color: inherit"
+          href="https://github.com/EducationLink/vue-tel-input/graphs/contributors"
+          >awesome humans</a
+        >.
+      </h2>
       <div style="width: 500px; margin: 20px auto;">
         <vue-tel-input
           :preferred-countries="['us', 'gb', 'ua']"
           :valid-characters-only="true"
-          @input="onInput"/>
+          @input="onInput"
+        />
       </div>
-      <div
-        v-if="phone.number"
-        style="color: #e83e8c">
+      <div v-if="phone.number" style="color: #e83e8c">
         <span>
           Number:
-          <strong>{{ phone.number }}</strong>,&nbsp;
+          <strong>{{ phone.number }}</strong
+          >,&nbsp;
         </span>
         <span>
           Is valid:
-          <strong>{{ phone.valid }}</strong>,&nbsp;
+          <strong>{{ phone.valid }}</strong
+          >,&nbsp;
         </span>
         <span>
           Country:
@@ -36,44 +46,42 @@
         [<a href="https://github.com/EducationLink/vue-tel-input">github</a>,
         <a href="https://github.com/EducationLink/vue-tel-input/releases">changelog</a>,
         <a href="https://www.npmjs.com/package/vue-tel-input">npm</a>,
-        <a
-          href=""
-          @click.prevent="showPlayground = !showPlayground">
-        {{ showPlayground ? 'homepage' : 'playground' }}</a>].
+        <a href="" @click.prevent="showPlayground = !showPlayground">
+          {{ showPlayground ? "homepage" : "playground" }}</a
+        >].
       </span>
     </div>
-    <div
-      v-if="showPlayground"
-      style="margin-top: 20px;">
+    <div v-if="showPlayground" style="margin-top: 20px;">
       <iframe
         src="https://codesandbox.io/embed/0yyyk45q7w?autoresize=1&fontsize=14&hidenavigation=1&module=%2Fsrc%2FApp.vue"
         title="Vue Template"
         allow="gyroscope; payment; ambient-light-sensor; encrypted-media"
         style="width:100%; height:80vh; border:0; border-radius: 4px; overflow:hidden;"
-        sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"/>
+        sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"
+      />
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'App',
+  name: "App",
   data() {
     return {
       showPlayground: false,
       phone: {
-        number: '',
+        number: "",
         valid: false,
-        country: undefined,
-      },
+        country: undefined
+      }
     };
   },
   methods: {
-    onInput(formattedNumber, { number, valid, country }) {
-      this.phone.number = number.international;
+    onInput(formattedNumber, { valid, country }) {
+      this.phone.number = formattedNumber;
       this.phone.valid = valid;
       this.phone.country = country && country.name;
-    },
-  },
+    }
+  }
 };
 </script>
